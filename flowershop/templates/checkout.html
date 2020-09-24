@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<span id="list" style="display: none"></span>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'cart-css/cart-title.css' %}">
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+{% block content %}
+<!-- title -->
+<section class="title">
+	<div class="container-fluid title d-flex align-items-center">
+		<div class="col-12 banner-text">
+			<div class="box wrap w-100 align-items-center checkout-box">
+				<div class="row">
+					<div class="col-md-3 col-sm-2 p-0">
+					</div>
+					<div class="col-md-1 col-sm-1 border-top p-0">
+					</div>
+					<div class="col-md-4 col-sm-6 p-0">
+						<h2 class="text-capitalize">Checkout</h2>
+					</div>
+					<div class="col-md-1 col-sm-1 border-top p-0">
+
+					</div>
+					<div class="col-md-3 col-sm-2 p-0">
+					</div>
+				</div>
+				<div class="box-item-inner">
+					<span><a class="btn-link" href="{% url 'flowershop-home' %}" typeof="WebPage" title="Go to home">
+							o8o
+						</a>
+					</span>
+					<i class="fa fa-angle-right" aria-hidden="true"></i>
+					<span> Payment</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- title -->
+<article class="checkout-detail-section" style="background-color: #EAEAEB;">
+	<div class="container mb-5">
+		<div class="row justify-content-between ">
+			<div class="card-address col-sm-11 col-md-10 col-lg-6 mb-4">
+				<div class="card w-100 " style="margin-top: 25px !important; margin-left: 20px;">
+					<div class="card-header">
+						1. Shipping Info
+					</div>
+					<div class="card-body">
+						<div id="profile-display">
+							<p class="card-text name-text"> <span class="font-weight-bold">Receiver's name :</span> {{ user.name }}</p>
+							<p class="card-text address-text"> <span class="font-weight-bold">Address :</span> {{ user.address }}</p>
+							<p class="card-text phone-text"><span class="font-weight-bold">Phone :</span> {{ user.cell_phone }}</p>
+						</div>
+						<a href="#" class="btn btn-outline-secondary btn-lg w-100 mt-2 ml-0" id="change-address-btn" style="border-radius:4px !important; line-height: 25px !important;">Set/Change Info</a>
+						<form id="change-address-form" method="POST">
+							{% csrf_token %}
+							<div class="form-group mt-2">
+								<label for="new-receiver">Receiver's name</label>
+								<input value="{{ user.name }}" name="name" type="text" class="form-control" id="new-receiver" aria-describedby="name" required>
+								<small id="name" class="form-text text-muted">We'll never share your information with anyone else.</small>
+							</div>
+							<div class="form-group">
+								<label for="new-address">Address</label>
+								<input value="{{ user.address }}" name="address" type="text" class="form-control" id="new-address" required>
+							</div>
+							<div class="form-group">
+								<label for="new-phone">Phone number</label>
+								<input name="phone" value="{{ user.cell_phone }}" type="text" class="form-control" id="new-phone" required>
+							</div>
+							<button type="button" class=" btn-secondary rounded" id="close-form">Close</button>
+							<button type="submit" class=" btn-primary rounded" id="save-form">Save</button>
+						</form>
+					</div>
+				</div>
+				<div class="card w-100" style="margin-top: 20px !important; margin-left: 20px;">
+					<div class="card-header">
+						2. Choose Payment Method
+					</div>
+					<div class="card-body ">
+						<form>
+							<div class="custom-control custom-radio pay-cod">
+								<input type="radio" class="custom-control-input " id="customRadio" name="example" value="customEx" checked>
+								<label class="custom-control-label" for="customRadio">
+									<strong>Pay in cash (COD)</strong>
+								</label>
+							</div>
+							<div class="custom-control custom-radio mt-1">
+								<input disabled type="radio" class="custom-control-input" id="customRadio2" name="example" value="customEx">
+								<label class="custom-control-label" for="customRadio2">
+									<strong>PayPal <span class="font-italic">(Will be available if our handsome teacher does not choose us on this week)</span></strong>
+								</label>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="card w-100" style="margin-top: 20px !important; margin-left: 20px;">
+					<div class="card-header">
+						3. Enter Coupon
+					</div>
+					<div class="card-body ">
+						<form id="form-coupon">
+							{% csrf_token %}
+							<div class="form-group">
+								<label for="coupon">Coupon code</label>
+								<input value="" name="coupon" type="text" class="form-control" id="counpon" required>
+							</div>
+							<div class="form-group">
+								<input class="btn-primary rounded" value="Apply" type="submit" id="apply-coupon">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-11 col-md-10 col-lg-6 mt-4 mb-4">
+				<div class="card-preview card mb-3 float-right mt-3" style="max-width: 24rem;">
+					<div class="card-header ">Your order <span id="quantity-product">({{ cart_count }} units)</span></div>
+					<div class="card-body text-info">
+						<table class="table table-hover product-review-table">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Product</th>
+									<th scope="col">Price</th>
+									<th class="remove-icon-cell" scope="col"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- {% for item in checkout_items %} -->
+								<tr>
+									<th scope="row">
+										<!--{{forloop.counter}} -->
+									</th>
+									<td>
+										<!--{{ item.item.title }}-->
+									</td>
+									<td class="price">
+										<!-- {{ item.get_final_price }}--> VNĐ</td>
+									<td class="remove-icon-cell"><a
+											href="{% url 'remove-item-from-cart' item.item.pk %}"><i
+												class="text-center fa fa-remove"></i></a></td>
+								</tr>
+								<!-- {% endfor %} -->
+								<tr>
+									<th colspan="2" scope="row">Temporary price</th>
+									<td colspan="2" class="text-right price total-cost">
+										<!--{{ total_cost }}-->
+									</td>
+								</tr>
+								<tr class="shipping-cost-tr">
+									<th scope="row" colspan="2">
+										<!--Shipping cost-->
+									</th>
+									<td colspan="2" class="text-right price shipping-cost">30000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="card-footer">
+						<strong style="color: black;">Total:</strong>
+						<span style="color: rgb(238, 35, 71); letter-spacing: 1px; font-size: 16px;"
+							class="float-right font-weight-bold final-cost price"> VNĐ</span>
+						<p class="font-italic text-right">(VAT inclusive)</p>
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+							<fieldset class="form-group" style="display: none;">
+								<legend class="border-bottom mb-4">Information Receiver</legend>
+								<input type="text" name="receiver"
+									value="{{ checkout_form.receiver.value|default_if_none:'' }}">
+								<input type="text" name="phone"
+									value="{{ checkout_form.phone.value|default_if_none:'' }}">
+								<input type="text" name="address"
+									value="{{ checkout_form.address.value|default_if_none:'' }}">
+							</fieldset>
+							<div class="form-group">
+								<button id="order-btn" type="submit"
+									class="btn btn-outline-secondary btn-lg w-100 order-btn"
+									style="border-radius:4px !important; line-height: 25px !important;">Place
+									order</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</article>
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/header.js' %}"></script>
+<script src="{% static 'js/banner.js' %}"></script>
+<script src="{% static 'js/checkout.js' %}"></script>
+{% endblock %}

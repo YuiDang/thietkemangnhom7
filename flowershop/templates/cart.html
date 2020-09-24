@@ -1,0 +1,104 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'library/swiper/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <!-- from cart-css -->
+    <link rel="stylesheet" href="{% static 'cart-css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'cart-css/cart-title.css' %}">
+    <link rel="stylesheet" href="{% static 'cart-css/responsive-cart.css' %}">
+    <link rel="stylesheet" href="{% static 'cart-css/order-bill.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- title -->
+    <section class="title">
+        <div class="container-fluid title d-flex align-items-center">
+            <div class="col-12 banner-text bg-transparent">
+                <div class="box wrap w-100 align-items-center cart-box">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-2 p-0">
+                        </div>
+                        <div class="col-md-1 col-sm-1 border-top p-0">
+                        </div>
+                        <div class="col-md-4 col-sm-6 p-0">
+                            <h2 class="text-capitalize">Cart</h2>
+                        </div>
+                        <div class="col-md-1 col-sm-1 border-top p-0">
+                            
+                        </div>
+                        <div class="col-md-3 col-sm-2 p-0">
+                        </div>
+                    </div>
+                    <div class="box-item-inner">
+                        <span><a class="btn-link" href="{% url 'flowershop-home' %}"  typeof="WebPage" title="Go to home">
+                            o8o 
+                        </a>
+                    </span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <span > Cart</span>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </section>
+    <!-- title -->
+    <!--table -->
+    <section id="items-table">
+        <div class="container table-responsive">
+            <table class="table table-light table-striped my-data-table col-12 table-hover" style="width:100%">
+                <thead>
+                    <tr class="list-header">
+                        <th scope="col">Image</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!---->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="col" colspan="6">
+                            <ul class="text-success mb-0" style="font-size: 16px; list-style-position: inside; font-weight: normal;">
+                                <p>When you update cart:</p>
+                                <li>We will remove "Out of stock" Item(s).</li>
+                                <li>We will make quantity of "Not enough" Item(s) equal to SKU if you don't change it to a number smaller than SKU.</li>
+                            </ul>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th data-title="" scope="col" colspan="3" class="text-right text-product-cell">Total:</th>
+                        <th id="quantity-total" data-title="quantity" scope="col" class="text-center text-product-cell"><!----></th>
+                        <th id="price-total" data-title="price" scope="col" class="text-center text-product-cell"><!----></th>
+                        <th scope="col" class="text-center text-product-cell">
+                            <form id="form-update-cart" method="POST" action="/update/cart/">
+                                {% csrf_token %}
+                                <button type="submit" id="update-cart" class="text-capitalize btn-custom btn-update-cart">
+                                    Update cart
+                                </button>
+                            </form>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>       
+            <button id="proceed-to-checkout" class="text-uppercase btn-custom btn-update-cart d-block mx-auto mt-2 mb-4">
+                Proceed to checkout
+            </button>  
+        </div>
+    </section>
+    <!--table -->
+{% endblock %}
+    
+{% block js %}
+    <!-- <script src="{% static 'library/swiper/swiper.min.js' %}"></script> -->
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/banner.js' %}"></script>
+    <script src="{% static 'js/cart.js' %}"></script>
+{% endblock %}

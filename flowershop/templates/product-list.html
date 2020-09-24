@@ -1,0 +1,92 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'library/swiper/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+    <link rel="stylesheet" href="{% static 'cart-css/cart-title.css' %}">
+    <link rel="stylesheet" href="{% static 'css/homeproduct.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="title">
+        <div class="container-fluid title d-flex align-items-center">
+            <div class="col-12 banner-text">
+                <div class="box wrap w-100 align-items-center list-box">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-2 p-0">
+                        </div>
+                        <div class="col-md-1 col-sm-1 border-top p-0">
+                        </div>
+                        <div class="col-md-4 col-sm-6 p-0">
+                            <h2 class="text-capitalize">our products</h2>
+                        </div>
+                        <div class="col-md-1 col-sm-1 border-top p-0">
+                            
+                        </div>
+                        <div class="col-md-3 col-sm-2 p-0">
+                        </div>
+                    </div>
+                    <div class="box-item-inner">
+                        <span><a class="btn-link" href="{% url 'flowershop-home' %}"  typeof="WebPage" title="Go to home">
+                            o8o 
+                        </a>
+                    </span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <span> Product list</span>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </section>
+    <!-- title -->
+    <article class="product-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 d-xl-block">
+                    <div id="filter-topic">
+                        <a class="d-block text-uppercase filter-title text-decoration-none" data-toggle="collapse" href="#topics-list">
+                            topics&nbsp;&nbsp;<i class="fa fa-bars"></i>
+                        </a>
+                        <ul class="list-unstyled filter-list" id="topics-list">
+                            {% for topic in topics %}
+                                {% if topic == selected_topic %}
+                                    <li class="active"><a class="text-uppercase" href="javascript:void(0)">{{ topic }}</a></li>
+                                {% else %}
+                                    <li><a class="text-uppercase" href="javascript:void(0)">{{ topic }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div id="filter-category">
+                        <a class="d-block text-uppercase filter-title text-decoration-none" data-toggle="collapse" href="#categories-list">
+                            categories&nbsp;&nbsp;<i class="fa fa-bars"></i>
+                        </a>
+                        <ul class="list-unstyled filter-list" id="categories-list">
+                            {% for category in categories %}
+                                {% if category == selected_category %}
+                                    <li class="active"><a class="text-uppercase" href="javascript:void(0)">{{ category }}</a></li>
+                                {% else %}
+                                    <li><a class="text-uppercase" href="javascript:void(0)">{{ category }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-9 products-container">
+                    <!--Products here-->
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'library/swiper/swiper.min.js' %}"></script>
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/banner.js' %}"></script>
+    <script src="{% static 'js/product-list.js' %}"></script>
+{% endblock %}

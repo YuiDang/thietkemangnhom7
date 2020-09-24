@@ -1,0 +1,236 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'library/swiper/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'library/wenumberic/wenumberic.css' %}">
+    <link rel="stylesheet" href="{% static 'library/werating/werating.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'cart-css/cart-title.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product-detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/homeproduct.css' %}">
+    <link rel="stylesheet" href="{% static 'css/review.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="title">
+        <div class="container-fluid title d-flex align-items-center">
+            <div class="col-12 banner-text">
+                <div class="box wrap w-100 align-items-center detail-box">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-2 p-0">
+                        </div>
+                        <div class="col-md-1 col-sm-1 border-top p-0">
+                        </div>
+                        <div class="col-md-4 col-sm-6 p-0">
+                            <h2 class="text-capitalize">{{ product_name }}</h2>
+                        </div>
+                        <div class="col-md-1 col-sm-1 border-top p-0">
+                            
+                        </div>
+                        <div class="col-md-3 col-sm-2 p-0">
+                        </div>
+                    </div>
+                    <div class="box-item-inner">
+                        <span>
+                            <a class="btn-link" href="{% url 'flowershop-home' %}"  typeof="WebPage" title="Go to home">o8o </a>
+                        </span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        <span> {{ product_name }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- title -->
+    <article class="product-detail-section">
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-md-2 d-none d-lg-block">
+                    <div style="height: 510px">
+                        <div class="swiper-container gallery-thumbs h-100">
+                            <div class="swiper-wrapper">
+                                <!--Slides here-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-5 mx-auto">
+                    <div class="swiper-container gallery-top">
+                        <div class="swiper-wrapper">
+                            <!--Slides here-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-5">
+                    <div class="detail-information">
+                        <h2 class="detail-title"></h2>
+                        <p class="detail-price"></p>
+                        <p class="detail-description"></p>
+                        <div class="add-to-cart-wrapper">
+                            <div class="quantity-wrapper d-inline-block">
+                                <span class="d-inline-block quantity-label">Quantity</span>
+                                <div class="wenumberic-product-detail enumber-control">
+                                    <input id="quantity" value="1" name="quantity" class="qty" type="text" readonly>
+                                </div>
+                            </div>
+                            {% if user.is_authenticated %}
+                                <button class="text-uppercase d-inline-block rounded-0 btn-add-to-cart">add to cart</button>
+                            {% else %}
+                                <a class="text-uppercase d-inline-block btn-add-to-cart" href="/account/login/?next=/products/{{ product_name }}/">add to cart</a>
+                            {% endif %}
+                        </div>
+                        <div class="more-information">
+                            <p class="sku"><span class="font-weight-bold">SKU :</span> </p>
+                            <p class="topics"><span class="font-weight-bold">TOPICS :</span> </p>
+                            <p class="categories"><span class="font-weight-bold">CATEGORIES :</span> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--TAB DESKTOP/ MOBILE-->
+        <div class="tab-desktop">
+            <div class="tab-header-section">
+                <div class="container">
+                    <a id="btn-tab-description" class="text-uppercase detail-tab-style active" href="javascript:void(0)">description</a>
+                    <a id="btn-tab-review" class="text-uppercase detail-tab-style" href="javascript:void(0)">reviews</a>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="container">
+                    <div class="tab-description">
+                        <!--...-->
+                    </div>
+                    <div class="tab-review" style="display: none;">
+                        <h4 class="cfpgte">GỬI NHẬN XÉT CỦA BẠN</h4>
+                        <div>
+                          <p>1. Đánh giá của bạn về sản phẩm này</p>
+                          <div class="we-rating-product we-rating-item" data-rating="0"></div>
+                        </div>
+                        <p>2. Tiêu đề của nhận xét</p>
+                        <input class="tieu-de" type="text" placeholder="Nhập tiêu đề nhận xét (Không bắt buộc)">
+                        <p>3. Viết nhận xét của bạn vào bên dưới</p>
+                        <textarea name="" id="" type ="text" placeholder="Nhận xét của bạn về sản phẩm này"></textarea>
+                        <div class="btn-gui-nhan-xet">
+                          <button class="btn-gui-nhan-xet">Gửi nhận xét</button>
+                        </div>          
+                        <!-- <p>Thông tin đang được cập nhật...</p> -->
+                        <!-- BEGIN REVIEW -->
+                        <div class="rev-section">
+                          <!-- <p class="note">{{ product_name }}</p> -->
+                          <!-- <img class="head-review" src="../../media/product_image/fr_70064740_7.jpg" alt="" width="250px"> -->
+                          <h2 class="title-review">KHÁCH HÀNG NHẬN XÉT</h2>
+                          <div class="reviews-review">
+                            <div class="review-review">
+                              <div class="head-review">
+                                <img class="img-review" src="../../media/review/1.jpg" alt="" width="250px">
+                              </div>
+                              <div class="body-review">
+                                <div class="name-review">Mai Ngọc</div>
+                                <div class="place-review">Hồ Chí Minh</div>
+                                <div class="rating-review">
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                </div>
+                                <div class="desc-review">
+                                  Không có một shop hoa nào tốt hơn để bạn lựa chọn cho một dịch vụ điện hoa chuyên nghiệp.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="review-review">
+                              <div class="head-review">
+                                <img class="img-review" src="../../media/review/2.jpg" alt="" width="250px">
+                              </div>
+                              <div class="body-review">
+                                <div class="name-review">Lê Thành</div>
+                                <div class="place-review">Hà Nội</div>
+                                <div class="rating-review">
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                </div>
+                                <div class="desc-review">
+                                  Hoa hướng dương rất nổi tiếng với tên gọi “hoa mặt trời” vì khi nở rộ hoa có hình tròn, cánh hoa
+                                  vàng
+                                  tươi như những tia nắng ấm áp.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="review-review">
+                              <div class="head-review">
+                                <img class="img-review" src="../../media/review/3.jpg" alt="" width="250px">
+                              </div>
+                              <div class="body-review">
+                                <div class="name-review">Long Giang</div>
+                                <div class="place-review">An Giang</div>
+                                <div class="rating-review">
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                </div>
+                                <div class="desc-review">
+                                  Theo văn hoá phương Đông hướng dương có ý nghĩa là niềm tin, hy vọng và lý tưởng vươn tới ánh sáng,
+                                  điều tốt đẹp.
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- END REVIEW -->
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-mobile mb-5" style="display: none;">
+            <button type="button" class="collapsible">description</button>
+            <div class="content">
+                <div class="tab-description">
+                    <!--...-->
+                </div>
+            </div>
+            <button type="button" class="collapsible">reviews</button>
+            <div class="content">
+                <div class="tab-review">
+                    <div class="we-rating-product we-rating-item" data-rating="0"></div>
+                    <p>Thông tin đang được cập nhật...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container position-relative">
+            <h2 class="related-products-title text-center">Related Products</h2>
+            <div class="swiper-container related-products-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                </div>
+            </div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev related-products-prev d-none d-xl-block"></div>
+            <div class="swiper-button-next related-products-next d-none d-xl-block"></div>
+        </div>
+    </article>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'library/swiper/swiper.min.js' %}"></script>
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'library/wenumberic/wenumberic.js' %}"></script>
+    <script src="{% static 'library/werating/werating.js' %}"></script>
+    <script src="{% static 'js/product-detail.js' %}"></script>
+    <script src="{% static 'js/banner.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"
+  integrity="sha512-M+hXwltZ3+0nFQJiVke7pqXY7VdtWW2jVG31zrml+eteTP7im25FdwtLhIBTWkaHRQyPrhO2uy8glLMHZzhFog=="
+  crossorigin="anonymous"></script>
+{% endblock %}

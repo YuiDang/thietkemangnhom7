@@ -1,0 +1,148 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'library/swiper/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/homebanner.css' %}">
+    <link rel="stylesheet" href="{% static 'css/overview.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/homeproduct.css' %}">
+    <link rel="stylesheet" href="{% static 'css/team.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section id="banner-section" class="position-relative">
+        <img width="100%" height="auto" src="{% static 'images/home/banner_bg.png' %}" alt="home-banner">
+        <div class="position-absolute blog-description">
+            <h1 class="blog-title">GROUP <span class="blog-title-pink">7</span>
+                <br>subject <span class="blog-title-red">THIET KE MANG</span></h1>
+            <p>Class: NT113.L11</p>
+            <p>Teacher: Tran Thi Dung</p>
+            <!--<p>I could walk forever in my garden.</p>-->
+        </div>
+    </section>
+    <section id="overview-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex overview-item gift-item">
+                        <div class="overview-icon">
+                            <img width="32" height="34" src="{% static 'images/home/gift.svg' %}" alt="gift-icon">
+                        </div>
+                        <div class="overview-description">Complete your order today and receive Gift Certificate<br class="d-none d-xl-block">
+                            with<span class="overview-discount"> 20% Off discount</span>.</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex overview-item">
+                        <div class="overview-icon">
+                            <img width="32" height="34" src="{% static 'images/home/send.svg' %}" alt="send-icon">
+                        </div>
+                        <div class="overview-description">Free shipping all over the world on<br class="d-none d-xl-block">
+                            orders over $150.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="blog-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <!-- Slider main container -->
+                    <div class="swiper-container blog-container">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-445px, 0px, 0px);">
+                            <!--Slides here-->
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination blog-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev blog-button-prev d-none d-xl-block"></div>
+                        <div class="swiper-button-next blog-button-next d-none d-xl-block"></div>
+                    </div>
+
+                </div>
+                <div class="col-lg-7 topics-container">
+                    <!--Topics here-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="home-product-section">
+        <div class="container text-center">
+            <h2 class="product-title">Feature Plant</h2>
+            <div class="new-arrival-title"><img width="65" height="55" src="{% static 'images/home/flower-icon.png' %}" alt="flower-icon"> new arrival <img width="65" height="55" src="{% static 'images/home/flower-right-icon.png' %}" alt="flower-icon"></div>
+            <div class="product-tab-wrapper">
+                <a id="new-arrival-tab" class="product-tab active" href="javascript:void(0)">New arrival</a>
+                <a id="on-sale-tab" class="product-tab" href="javascript:void(0)">On sale</a>
+            </div>
+            <div class="new-arrival-wrapper">
+                <!--New arrival here-->
+            </div>
+            <div class="on-sale-wrapper" style="display: none;">
+                <!--On sale here-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="team-section">
+        <div class="container text-center">
+            <div class="d-inline-block">
+                <div class="wonderfull-gift-title text-left">Wonderfull gift</div>
+                <h2 class="text-left team-title text-uppercase">our team of experts</h2>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-3 mb-3 mb-md-0">
+                    <div class="member-wrapper rounded ">
+                        <a target="_blank" target="_blank" title="Facebook" rel="noopener noreferrer" href="https://www.facebook.com/dragon.evil.wings" class="card-link">
+                            <img width="300" height="300" src="{% static 'images/home/team-1.png' %}">
+                        </a>
+                        <div class="member-name">
+                            <a target="_blank" title="Facebook" href="https://www.facebook.com/dragon.evil.wings" class="nav-link">Dung Tran<br>(GV)</a></div>
+                        <div class="member-name member-position">Founder</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 mb-3 mb-md-0">
+                    <div class="member-wrapper">
+                        <a target="_blank" title="Facebook" rel="noopener noreferrer" href="https://www.facebook.com/g4ob4c" class="card-link">
+                            <img width="300" height="300" src="{% static 'images/home/team-2.png' %}" alt="avar-2">
+                        </a>
+                        <div class="member-name"><a target="_blank" title="Facebook" href="https://www.facebook.com/g4ob4c" class="nav-link">Nghi Dang<br>(17520114)</a></div>
+                        <div class="member-name member-position">Florist</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="member-wrapper">
+                        <a target="_blank" title="Facebook" rel="noopener noreferrer" href="https://www.facebook.com/dove.fonghoatuyetnguyet" class="card-link">
+                            <img width="300" height="300" src="{% static 'images/home/team-3.png' %}" alt="avar-3">
+                        </a>
+                        <div class="member-name"><a target="_blank" title="Facebook" href="https://www.facebook.com/dove.fonghoatuyetnguyet" class="nav-link">An Thai<br>(17520222)</a></div>
+                        <div class="member-name member-position">Florist</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="member-wrapper">
+                        <a target="_blank" title="Facebook" rel="noopener noreferrer" href="https://www.facebook.com/nguyenhuythuat99" class="card-link">
+                            <img width="300" height="300" src="{% static 'images/home/team-4.png' %}" alt="avar-4">
+                        </a>
+                        <div class="member-name"><a target="_blank" title="Facebook" href="https://www.facebook.com/nguyenhuythuat99" class="nav-link">Phuc Nguyen<br>(17520128)</a></div>
+                        <div class="member-name member-position">Florist</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js%}
+    <script src="{% static 'library/swiper/swiper.min.js' %}"></script>
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/banner.js' %}"></script>
+    <script src="{% static 'js/home-product.js' %}"></script>
+    <script src="{% static 'js/home-data.js' %}"></script>
+{% endblock %}

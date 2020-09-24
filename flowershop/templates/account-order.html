@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <link rel="stylesheet" href="{% static 'css/account-order.css' %}">
+{% endblock %}
+
+{% block content %}
+    <article class="account-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 border-right d-none d-xl-block">
+                    <div class="account-title">Hi, Dang Khiet Nghi</div>
+                    <ul class="account-left-sidebar pl-0">
+                        <li>
+                            <a href="#">
+                                <svg width="17" height="17" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1536 1399q0 109-62.5 187t-150.5 78h-854q-88 0-150.5-78t-62.5-187q0-85 8.5-160.5t31.5-152 58.5-131 94-89 134.5-34.5q131 128 313 128t313-128q76 0 134.5 34.5t94 89 58.5 131 31.5 152 8.5 160.5zm-256-887q0 159-112.5 271.5t-271.5 112.5-271.5-112.5-112.5-271.5 112.5-271.5 271.5-112.5 271.5 112.5 112.5 271.5z"/></svg>
+                                &nbsp;&nbsp;My Infomartion
+                            </a>
+                        </li>
+                        <li>
+                            <a class="active" href="#">
+                                <svg width="17" height="17" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M704 1536q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm896 0q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm128-1088v512q0 24-16.5 42.5t-40.5 21.5l-1044 122q13 60 13 70 0 16-24 64h920q26 0 45 19t19 45-19 45-45 19h-1024q-26 0-45-19t-19-45q0-11 8-31.5t16-36 21.5-40 15.5-29.5l-177-823h-204q-26 0-45-19t-19-45 19-45 45-19h256q16 0 28.5 6.5t19.5 15.5 13 24.5 8 26 5.5 29.5 4.5 26h1201q26 0 45 19t19 45z"/></svg>
+                                &nbsp;&nbsp;My Order
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-xl-9">
+                    <div class="account-title">My Order</div>
+                    <div class="order-item">
+                        <div class="row">
+                            <div class="col-6 col-md-3 mb-3 mb-xl-0">
+                                <div>Order No: <a class="btn-view-detail" href="javascript:void(0)">P01248612</a></div>
+                                <div>Date: 4/7/2020</div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div>Total:</div>
+                                <div>1,700,000 VNĐ</div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div>Payment Method:</div>
+                                <div>Cash</div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="font-weight-bold">Status:</div>
+                                <div class="font-weight-bold">Waiting for confirmation</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-item">
+                        <div class="row">
+                            <div class="col-6 col-md-3 mb-3 mb-xl-0">
+                                <div>Order No: <a class="btn-view-detail" href="javascript:void(0)">P01248612</a></div>
+                                <div>Date: 4/7/2020</div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div>Total:</div>
+                                <div>1,700,000 VNĐ</div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div>Payment Method:</div>
+                                <div>Cash</div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="font-weight-bold">Status:</div>
+                                <div class="font-weight-bold">Waiting for confirmation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--POPUP DETAIL ORDER-->
+        <div class="position-fixed popup-detail-order d-none">
+            <div class="order-detail-content bg-white position-absolute">
+                <div class="row h-100">
+                    <div class="col-12 col-lg-6 col-xl-8 bg-white overflow-auto scrollbar scrollbar-rare-wind h-100 order-2 order-lg-1">
+                        <div class="product-item px-3 py-3">
+                            <div class="row">
+                                <div class="col-4 col-xl-3">
+                                    <img width="136" height="136"
+                                         src="http://127.0.0.1:8000/media/product_thumbnail/download_8.jpg" alt="rose">
+                                </div>
+                                <div class="col-8 col-xl-9 d-flex">
+                                    <div class="product-item-info align-self-center">
+                                        <h2 class="product-item-title">Red Rose</h2>
+                                        <div class="d-flex">
+                                            <div class="mr-xl-5">
+                                                <p class="mb-0">
+                                                    <span>Price:</span>&nbsp;
+                                                    <span>900,000 VNĐ</span>
+                                                </p>
+                                                <p class="mb-0 d-block d-xl-none">
+                                                    <span>Quantity:</span>&nbsp;
+                                                    <span>02</span>
+                                                </p>
+                                                <p class="mb-0 d-none d-xl-block">
+                                                    <span>Price root:</span>&nbsp;
+                                                    <span class="price-root">1,000,000 VNĐ</span>
+                                                </p>
+                                            </div>
+                                            <div class="d-none d-xl-block">
+                                                <p>
+                                                    <span>Quantity:</span>&nbsp;
+                                                    <span>02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0 product-topic d-none d-xl-block">
+                                            <span>Topic:</span>&nbsp;
+                                            <span>Flower Meaning</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item px-3 py-3">
+                            <div class="row">
+                                <div class="col-4 col-xl-3">
+                                    <img width="136" height="136"
+                                         src="http://127.0.0.1:8000/media/product_thumbnail/download_8.jpg" alt="rose">
+                                </div>
+                                <div class="col-8 col-xl-9 d-flex">
+                                    <div class="product-item-info align-self-center">
+                                        <h2 class="product-item-title">Red Rose</h2>
+                                        <div class="d-flex">
+                                            <div class="mr-xl-5">
+                                                <p class="mb-0">
+                                                    <span>Price:</span>&nbsp;
+                                                    <span>900,000 VNĐ</span>
+                                                </p>
+                                                <p class="mb-0 d-block d-xl-none">
+                                                    <span>Quantity:</span>&nbsp;
+                                                    <span>02</span>
+                                                </p>
+                                                <p class="mb-0 d-none d-xl-block">
+                                                    <span>Price root:</span>&nbsp;
+                                                    <span class="price-root">1,000,000 VNĐ</span>
+                                                </p>
+                                            </div>
+                                            <div class="d-none d-xl-block">
+                                                <p>
+                                                    <span>Quantity:</span>&nbsp;
+                                                    <span>02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0 product-topic d-none d-xl-block">
+                                            <span>Topic:</span>&nbsp;
+                                            <span>Flower Meaning</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item px-3 py-3">
+                            <div class="row">
+                                <div class="col-4 col-xl-3">
+                                    <img width="136" height="136"
+                                         src="http://127.0.0.1:8000/media/product_thumbnail/download_8.jpg" alt="rose">
+                                </div>
+                                <div class="col-8 col-xl-9 d-flex">
+                                    <div class="product-item-info align-self-center">
+                                        <h2 class="product-item-title">Red Rose</h2>
+                                        <div class="d-flex">
+                                            <div class="mr-xl-5">
+                                                <p class="mb-0">
+                                                    <span>Price:</span>&nbsp;
+                                                    <span>900,000 VNĐ</span>
+                                                </p>
+                                                <p class="mb-0 d-block d-xl-none">
+                                                    <span>Quantity:</span>&nbsp;
+                                                    <span>02</span>
+                                                </p>
+                                                <p class="mb-0 d-none d-xl-block">
+                                                    <span>Price root:</span>&nbsp;
+                                                    <span class="price-root">1,000,000 VNĐ</span>
+                                                </p>
+                                            </div>
+                                            <div class="d-none d-xl-block">
+                                                <p>
+                                                    <span>Quantity:</span>&nbsp;
+                                                    <span>02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0 product-topic d-none d-xl-block">
+                                            <span>Topic:</span>&nbsp;
+                                            <span>Flower Meaning</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item px-3 py-3">
+                            <div class="row">
+                                <div class="col-4 col-xl-3">
+                                    <img width="136" height="136"
+                                         src="http://127.0.0.1:8000/media/product_thumbnail/download_8.jpg" alt="rose">
+                                </div>
+                                <div class="col-8 col-xl-9 d-flex">
+                                    <div class="product-item-info align-self-center">
+                                        <h2 class="product-item-title">Red Rose</h2>
+                                        <div class="d-flex">
+                                            <div class="mr-xl-5">
+                                                <p class="mb-0">
+                                                    <span>Price:</span>&nbsp;
+                                                    <span>900,000 VNĐ</span>
+                                                </p>
+                                                <p class="mb-0 d-block d-xl-none">
+                                                    <span>Quantity:</span>&nbsp;
+                                                    <span>02</span>
+                                                </p>
+                                                <p class="mb-0 d-none d-xl-block">
+                                                    <span>Price root:</span>&nbsp;
+                                                    <span class="price-root">1,000,000 VNĐ</span>
+                                                </p>
+                                            </div>
+                                            <div class="d-none d-xl-block">
+                                                <p>
+                                                    <span>Quantity:</span>&nbsp;
+                                                    <span>02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0 product-topic d-none d-xl-block">
+                                            <span>Topic:</span>&nbsp;
+                                            <span>Flower Meaning</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4 pr-0 pr-xl-3 pl-3 pl-sm-0 order-1 order-lg-2">
+                        <div class="py-3 px-3 detail-order h-100">
+                            <h2 class="text-center detail-order-title">Detail Order</h2>
+                            <div>
+                                <p class="clearfix">
+                                    <span>Order No:</span>&nbsp;
+                                    <span class="float-right">P01231244</span>
+                                </p>
+                                <p class="clearfix">
+                                    <span>Date:</span>&nbsp;
+                                    <span class="float-right">4/7/2020</span>
+                                </p>
+                                <p class="clearfix">
+                                    <span>Status:</span>&nbsp;
+                                    <span class="float-right">Waiting for confirmation</span>
+                                </p>
+                            </div>
+                            <hr>
+                            <div class="total-row">
+                                <p class="clearfix">
+                                    <span>Payment Method:</span>&nbsp;
+                                    <span class="float-right">Cash</span>
+                                </p>
+                                <p class="clearfix font-weight-bold total-line">
+                                    <span>Total:</span>&nbsp;
+                                    <span class="float-right">1,700,000 VNĐ</span>
+                                </p>
+                            </div>
+                            <div>
+                                <a class="btn-danger btn-custom" href="javascript:void(0)"  data-toggle="modal" data-target="#discardOrderModal">Discard</a>
+                                <a class="btn-success btn-custom btn-discard-close" href="javascript:void(0)">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--POPUP WARNING DISCARD ITEM-->
+        <!-- Modal -->
+        <div class="modal fade" id="discardOrderModal" tabindex="-1" role="dialog" aria-labelledby="discardOrderModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Discard Item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-white bg-dark d-flex justify-content-center align-items-center">
+                <p class="modal-discard-content">MAKE SURE YOU WANT TO DISCARD THIS ORDER?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn-custom btn-danger">YES</button>
+                <button type="button" class="btn-custom btn-success" data-dismiss="modal">NO</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </article>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/account-order.js' %}"></script>
+    <!--js cũng tương tự css-->
+{% endblock %}

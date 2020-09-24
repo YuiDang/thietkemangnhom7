@@ -1,0 +1,73 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <form method="POST" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <img class="avt-img" src="{% static 'images/sign-in/avt-img.svg' %}" alt="avt">
+        <h2 class="greeting"><span>o8o</span> welcome</h2>
+        {% if form.non_field_errors or form.errors %}
+            <ul class="alert alert-danger" style="list-style-position: inside;">
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <li class="text-justify p-0 m-0">{{ error }}</li>
+                    {% endfor %}
+                {% endif %}
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li class="text-justify p-0 m-0">{{error}}</li>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        {% endif %}
+        <div class="textbox">
+            <div class="i">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+                <h5 id="email">Email</h5>
+                {{ form.email }}
+            </div>
+            <div class="notice">
+                <i class="fas fa-exclamation-circle"></i>
+                <span class="tooltip-text"></span>
+            </div>
+        </div>
+        <div class="textbox">
+            <div class="i">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div>
+                <h5 id="password">Password</h5>
+                {{ form.password1 }}
+            </div>
+            <div class="notice">
+                <i class="fas fa-exclamation-circle"></i>
+                <span class="tooltip-text"></span>
+            </div>
+        </div>
+        <div class="textbox">
+            <div class="i">
+                <i class="fas fa-sync"></i>
+            </div>
+            <div>
+                <h5 id="retype">Re-type your password</h5>
+                {{ form.password2 }}
+            </div>
+            <div class="notice">
+                <i class="fas fa-exclamation-circle"></i>
+                <span class="tooltip-text"></span>
+            </div>
+        </div>
+        <p>By clicking SIGN UP, you have agreed with our <a href="#">Terms of services</a></p>
+        <input class="btn submit" type="submit" value="Sign up">
+        <div class="link-container">
+            <a id="go-to-login" href="{{ login_url }}" class="nav-link">I am already member</a>
+        </div>
+    </form>
+{% endblock %}

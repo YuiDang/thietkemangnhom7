@@ -1,0 +1,19 @@
+body {
+    padding-top: 146px;
+    color: #222;
+    font-family: sans-serif;
+}
+
+.search-result-wrapper {
+    padding: 60px 0;
+}
+
+.search-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.search-result {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+}

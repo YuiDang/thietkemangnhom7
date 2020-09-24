@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+<link rel="stylesheet" href="{% static 'css/homeproduct.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="search-result-wrapper">
+    <div class="container products-container">
+        <h1 class="text-center search-title"><strong id="results-show"></strong> of over <strong id="results-sum"></strong> results for "<strong id="key">{{ key }}</strong>"</h1>
+        <!---->
+    </div>
+</main>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/header.js' %}"></script>
+<script src="{% static 'js/search.js' %}"></script>
+<!--js cũng tương tự css-->
+{% endblock %}

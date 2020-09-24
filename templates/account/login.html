@@ -1,0 +1,92 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% block content %}
+    <form method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <img class="avt-img" src="{% static 'images/sign-in/male-avatar.svg' %}" alt="avt">
+        <h2 class="greeting"><a class="nav-link" href="index.html" title="Homepage"><span>o8o</span> welcome</a></h2>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} text-left">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if form.non_field_errors or form.errors %}
+            <ul class="alert alert-danger" style="list-style-position: inside;">
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <li class="text-justify p-0 m-0">{{ error }}</li>
+                    {% endfor %}
+                {% endif %}
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li class="text-justify p-0 m-0">{{error}}</li>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        {% endif %}
+        <div class="textbox">
+            <div class="i">
+                <i class="fas fa-user"></i>
+            </div>
+            <div>
+                <h5 id="email">Email</h5>
+                {{ form.login }}
+            </div>
+            <div class="notice">
+                <i class="fas fa-exclamation-circle"></i>
+                <span class="tooltip-text"></span>
+            </div>
+        </div>
+        <div class="textbox">
+            <div class="i">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div>
+                <h5 id="password">Password</h5>
+                {{ form.password }}
+            </div>
+            <div class="notice">
+                <i class="fas fa-exclamation-circle"></i>
+                <span class="tooltip-text"></span>
+            </div>
+        </div>
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <div class="link-container">
+            <a href="{% url 'account_reset_password' %}" class="nav-link">Forgot password?</a>
+        </div>
+        <div class="link-container">
+            <a id="create-account" href="{{ signup_url }}" class="nav-link">Create an new account</a>
+        </div>
+        <input class="btn submit" type="submit" value="Login">
+        <div class="another-way-login row justify-content-center">
+            {% get_providers as socialaccount_providers %}
+            {% if socialaccount_providers %}
+                <div class="col-12">
+                    Or login with other ways:
+                </div>
+                {% for provider in socialaccount_providers %}
+                    {% if provider.name == 'Facebook' %}
+                        <a id="facebook" href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}" class="nav-link col-2 text-right pr-1" title="Login with facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    {% elif provider.name == 'Google' %}
+                        <a id="google" href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}" class="nav-link col-2 text-left pl-1"  title="Login with google">
+                            <i class="fab fa-google-plus-official"></i>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>        
+    </form>
+{% endblock %}
