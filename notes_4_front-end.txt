@@ -1,0 +1,27 @@
+django_project
+|
+|__...
+|
+|__flowershop
+|  |
+|  |...
+|  |
+|  |__static: font, image, css, js, ...
+|  |
+|  |__templates: html của trang shop
+|
+|__templates
+   |
+   |__account: html của trang đăng ký, đăng nhập để override template của django-allauth
+
+
+* Ví dụ cách chèn css, image, js:
+
+{% load static %}
+...
+<link rel="stylesheet" href="{% static 'library/swiper/swiper.min.css' %}">
+...
+<img  src="{% static 'images/home/logo_transparent.png' %}" alt="logo" width="120px" height="120px"></a>
+...
+<script src="{% static 'library/swiper/swiper.min.js' %}"></script>
+...
